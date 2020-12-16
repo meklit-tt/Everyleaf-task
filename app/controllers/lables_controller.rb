@@ -1,0 +1,2 @@
+class LablesController < ApplicationController
+end
