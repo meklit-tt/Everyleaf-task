@@ -6,11 +6,12 @@ class TasksController < ApplicationController
   end
 
   def show
+    #@task = Task.new(task_params)
   end
 
   def new
     if params[:back]
-      @task = Task.new(post_params)
+      @task = Task.new(task_params)
     else
       @task = Task.new
     end
@@ -26,7 +27,8 @@ class TasksController < ApplicationController
   end
 
   def create
-    @task = current_user.tasks.build(task_params)
+    @task = Task.new(task_params)
+    @task.user_id = current_user.id
     if params[:back]
       render :new
     else
@@ -38,7 +40,7 @@ class TasksController < ApplicationController
 
   def update
       @task = Task.find(params[:id])
-      if @task.update(user_params)
+      if @task.update(task_params)
         redirect_to task_path(@task.id), success: 'task was successfully updated.'
       else
         render :edit
@@ -55,7 +57,7 @@ class TasksController < ApplicationController
      @task = Task.find(params[:id])
   end
 
-  def post_params
+  def task_params
      params.require(:task).permit(:id,:title, :detail, :tasks, :user_id, :name, :email)
   end
 end

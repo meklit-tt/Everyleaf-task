@@ -1,0 +1,20 @@
+<div class="text-center">
+<p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="col-xs-4 col-xs-push-4 post">
+    <h2>All Users</h2>
+
+  <div class="row list_wrapper">
+    <% @users.each do |user| %>
+
+          <h3>
+            <strong> <%= link_to "#{user.name}", user_path(user.id) %> </strong>
+          </h3>
+        </div>
+      </div>
+    <% end %>
+
+        <%= link_to tasks_path %><h3>Return to Home</h3>
+      </div>
+    </div>
+</div>

@@ -1,7 +1,7 @@
 class SessionsController < ApplicationController
   def new
     if logged_in?
-      redirect_to posts_path
+      redirect_to tasks_path
     end
   end
     def create
@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
         if user && user.authenticate(params[:session][:password])
         session[:user_id] = user.id
         flash[:notice] = 'login succeed'
-        redirect_to posts_path
+        redirect_to tasks_path
         else
         flash[:danger] = 'Failed to login'
         render :new

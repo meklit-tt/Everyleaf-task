@@ -4,11 +4,11 @@ class UsersController < ApplicationController
   def index
     @users = User.all.order(created_at: "DESC")
   end
-
+  
   def new
     @user = User.new
     if logged_in?
-      redirect_to posts_path
+      redirect_to tasks_path
     end
   end
 

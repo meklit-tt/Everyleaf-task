@@ -13,25 +13,21 @@
 <% end %>
 
 <%= form_with(model: @user, local: true) do |f| %>
-<tr>
-  <td>
+
   <%= f.label :name %>
   <%= f.text_field :name %>
-  </td></tr>
-<tr>
-  <td>
+
   <%= f.label :email %>
   <%= f.email_field :email %>
-  </td></tr>
-<tr>
-  <td>
+
   <%= f.label :password %>
   <%= f.password_field :password %>
-  </td></tr>
-  <tr>
-   <td>
+
   <%= f.label :password_confirmation %>
   <%= f.password_field :password_confirmation %>
-  </td></tr>
+
   <%= f.submit "Create my account" %>
-  </td></tr>
+
+  </div>
+  </table>
+  <% end %>

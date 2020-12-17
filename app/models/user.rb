@@ -7,5 +7,4 @@ class User < ApplicationRecord
 
  validates :password, presence: true, length: {minimum: 6}
  has_many :tasks
- has_many :lables, dependent: :destroy
-end
+ end

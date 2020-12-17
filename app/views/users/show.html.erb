@@ -1,10 +1,10 @@
 <div class="container">
-<h1><%= @user.name %>'s task page</h1>
-<h3>email address: <%= @user.email %></h>
+<h1>Name:<%= @user.name %></h1>
+<h3>email address: <%= @user.email %></h3>
 <hr>
 <% if logged_in? %>
   <%= link_to 'View tasks', tasks_path %>
-<%else%>
-  <%= link_to 'Log in', new_session_path%>
-<%end%>
+<% else %>
+  <%= link_to 'Log in', new_session_path %>
+<% end %>
 </div>
