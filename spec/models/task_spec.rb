@@ -3,7 +3,7 @@ describe 'Task model function', type: :model do
   describe 'Validation test' do
     context 'If the task title is empty' do
       it 'It's hard to Validation' do
-        task = Task.new(title: '', content: 'Failure test')
+        task = Task.new(title: '', detail: '' 'Failure test')
         expect(task).not_to be_valid
       end
     end

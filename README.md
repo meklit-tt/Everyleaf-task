@@ -1,5 +1,4 @@
 
-<title>schema</title>
 | Tasks |
 | ---|
 | column | type |
@@ -15,9 +14,6 @@
 | password_digest | string |
 
 | label |
-| column |
-| name |
-| task_id |
-| user_id |
-
-| add_foreign_key "tasks", "users" |
+| --- |
+| column | type |
+| name | string |
