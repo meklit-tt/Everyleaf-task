@@ -1,17 +1,23 @@
-# README
 
-the table schema
-user
- name :string
- email :string
- password_digest :string
+<title>schema</title>
+| Tasks |
+| ---|
+| column | type |
+| title  | string |
+| detail | string |
+| "user_id" | bigint |
 
- Task
-  title :string
-  detail :string
-  bigint :"user_id"
+| users |
+| --- |
+|column | type |
+| name | string |
+| email | string |
+| password_digest | string |
 
-lable
- name :string
+| label |
+| column |
+| name |
+| task_id |
+| user_id |
 
-add_foreign_key "tasks", "users"
+| add_foreign_key "tasks", "users" |
