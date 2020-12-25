@@ -14,9 +14,10 @@
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
-    config.before(:each,type: :system) do
-    driven_by (:selenium_chrome)
-  end
+  config.before(:each, type: :system) do
+  driven_by(:selenium_chrome)
+end
+
   config.expect_with :rspec do |expectations|
     # This option will default to `true` in RSpec 4. It makes the `description`
     # and `failure_message` of custom matchers include text for helper methods

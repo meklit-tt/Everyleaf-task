@@ -1,2 +1,0 @@
-class LablesController < ApplicationController
-end

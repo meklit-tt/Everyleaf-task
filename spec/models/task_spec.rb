@@ -1,20 +1,34 @@
 require 'rails_helper'
-describe 'Task model function', type: :model do
-  describe 'Validation test' do
-    context 'If the task title is empty' do
-      it 'It's hard to Validation' do
-        task = Task.new(title: '', content: 'Failure test')
-        expect(task).not_to be_valid
-      end
+RSpec.describe 'Task management function', type: :system do
+  describe 'List display function' do
+    context 'When transitioning to the list screen' do
+      it 'The created task list is displayed' do
+      task = FactoryBot.create(:task, title: 'task')
+      task = FactoryBot.create(:task, detail: 'task')
+      visit tasks_path
+      expect(page).to have_content 'Task'
     end
-　　context 'If the task details are empty' do
-      it 'Validation is caught' do
-        # Write content here
-      end
-    end
-    context 'When the content is described in the task title and details' do
-      it 'Validation passes' do
-        # Write content here
+   end
+end
+
+   describe 'List display function' do
+    context 'When transitioning to the list screen' do
+      it 'The created task list is displayed' do
+        task = FactoryBot.create(:task, title: 'task')
+        task = FactoryBot.create(:task, detail: 'task')
+        visit tasks_path
+        expect(page).to have_content 'test_detail'
       end
     end
   end
+  describe 'Detailed display function' do
+     context 'When transitioned to any task details screen' do
+       it 'The content of the relevant task is displayed' do
+         task = FactoryBot.create(:task, title: 'task')
+         task = FactoryBot.create(:task, detail: 'task')
+         visit tasks_path
+         expect(page).to have_content 'detail'
+       end
+     end
+  end
+end
