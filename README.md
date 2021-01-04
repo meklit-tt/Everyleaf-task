@@ -17,3 +17,10 @@
 | --- |
 | column | type |
 | name | string |
+
+# Heroku Login
+# heroku create/ create new application/
+# deploy heroku app
+# link heroku app with github repository
+# link heroku app with github working branch
+# migrate the database /run rails db:migrate/ from heroku cnsole
