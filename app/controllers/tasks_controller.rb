@@ -7,7 +7,7 @@ class TasksController < ApplicationController
   end
 
   def show
-    #@task = Task.new(task_params)
+  #  @task = Task.new(task_params)
   end
 
   def new
@@ -20,7 +20,7 @@ class TasksController < ApplicationController
 
   def confirm
    @task = Task.new(task_params)
-  # @task.user_id = current_user.id
+   #@task.user_id = current_user.id
   end
 
   def edit
@@ -29,13 +29,15 @@ class TasksController < ApplicationController
 
   def create
     @task = Task.new(task_params)
-  #  @task.user_id = current_user.id
-    if params[:back]
-      render :new
+    #@task.user_id = current_user.id
+    if @task.save
+    redirect_to tasks_path
+    flash[:notice] = 'task created'
+
     else
-      @task.save
-      flash[:notice] = 'task created'
-      redirect_to tasks_path
+      render :new
+      #flash[:notice] = 'task created'
+
     end
   end
 
