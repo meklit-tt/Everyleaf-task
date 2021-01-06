@@ -3,10 +3,11 @@ class TasksController < ApplicationController
 
   def index
     @tasks = Task.all
+    @tasks= Task.all.order(created_at: "desc" )
   end
 
   def show
-    #@task = Task.new(task_params)
+  #  @task = Task.new(task_params)
   end
 
   def new
@@ -18,8 +19,8 @@ class TasksController < ApplicationController
   end
 
   def confirm
-    #@task = Task.new(task_params)
-    #@task.user_id = current_user.id
+   @task = Task.new(task_params)
+   #@task.user_id = current_user.id
   end
 
   def edit
@@ -29,17 +30,19 @@ class TasksController < ApplicationController
   def create
     @task = Task.new(task_params)
     #@task.user_id = current_user.id
-    if params[:back]
-      render :new
+    if @task.save
+    redirect_to tasks_path
+    flash[:notice] = 'task created'
+
     else
-      @task.save
-      flash[:notice] = 'task created'
-      redirect_to tasks_path
+      render :new
+      #flash[:notice] = 'task created'
+
     end
   end
 
   def update
-      #@task = Task.find(params[:id])
+      @task = Task.find(params[:id])
       if @task.update(task_params)
         redirect_to task_path(@task.id), success: 'task was successfully updated.'
       else
@@ -58,6 +61,6 @@ class TasksController < ApplicationController
   end
 
   def task_params
-     params.require(:task).permit(:title, :detail )
+     params.require(:task).permit(:id, :tasks, :title, :detail )
   end
 end
