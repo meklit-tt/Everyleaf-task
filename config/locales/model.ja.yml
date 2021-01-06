@@ -1,10 +1,10 @@
 ja:
  activerecord:
  models:
- post: Post
+ task: Task
  user: user
  attributes:
- post:
+ task:
  title: title
  detail: detail
  user:
