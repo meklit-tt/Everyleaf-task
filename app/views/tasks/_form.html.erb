@@ -21,6 +21,9 @@
     <%= form.label :deadline %>
     <%= form.text_area :deadline %>
   </div>
+  <div class="field">
+    <%= form.label :status %>
+     <%= form.select :status, ["unstarted", "in progress" , "completed"] %>
   <div class="actions">
     <%= form.submit %>
   </div>

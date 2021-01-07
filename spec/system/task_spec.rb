@@ -66,7 +66,7 @@ end
       fill_in 'Detail', with: 'details3'
       fill_in 'Deadline', with: '2020-1-20'
       click_button 'Create Task'
-      click_button 'sort by the deadline'
+      click_button 'sort by deadline'
       assert Task.all.order(deadline: "desc")
    end
   end
