@@ -21,7 +21,7 @@
         <td><button type="button" class="btn btn-secondary"><%= link_to 'Show', task %></button></td>
         <td><button type="button" class="btn btn-secondary"><%= link_to 'Edit', edit_task_path(task) %></button></td>
         <td><button type="button" class="btn btn-secondary"><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></button></td>
-        <td><button type="button" class="btn btn-secondary"><%= link_to " sort by the deadline", tasks_path(sort_expired: "true") %></button></td>
+        <td><button type="button" class="btn btn-secondary"><%= link_to "sort by the deadline", tasks_path(sort_expired: "true") %></button></td>
       </tr>
     <% end %>
   </tbody>

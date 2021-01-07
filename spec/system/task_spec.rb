@@ -60,4 +60,19 @@ RSpec.describe 'Task management function', type: :system do
                                                                                                           assert Task.all.order(created_at: "desc")
       end
     end
+        describe 'New Destroy function' do
+        context 'When deleting a new task' do
+             it 'Should display deleted task' do
+                  visit new_task_path
+                   fill_in 'Title', with: 'Task3'
+                   fill_in 'Detail', with: 'details3'
+                    fill_in 'Deadline', with: '2020-1-20'
+                    click_button 'Create Task'
+                    click_button 'sort by the deadline'
+
+                  assert Task.all.order(deadline: "desc")
+
   end
+end
+end
+end

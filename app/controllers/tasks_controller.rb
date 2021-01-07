@@ -3,8 +3,8 @@ class TasksController < ApplicationController
 
   def index
     @tasks = Task.all
-  #  @tasks= Task.all.order (created_at: "desc" )
-     @tasks= Task.all.order(params[:sort_expired], created_at: "desc")
+     @tasks= Task.all.order(created_at: "desc")
+     @tasks= Task.all.order(params[:sort_expired], deadline: "desc")
   end
 
   def show

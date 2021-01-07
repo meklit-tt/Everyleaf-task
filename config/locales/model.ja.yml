@@ -4,9 +4,10 @@ ja:
  post: Post
  user: user
  attributes:
- post:
+ task: Task
  title: title
  detail: detail
+ deadline: deadline
  user:
  title: title
  name: name

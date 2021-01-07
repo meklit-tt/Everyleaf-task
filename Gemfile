@@ -35,6 +35,8 @@ group :development, :test do
 
   gem 'capybara'
 
+  #gem  'rails-i18n'
+
 end
 
 group :development do
@@ -48,7 +50,7 @@ end
 
 group :test do
 
-#  gem  'capybara'
+  #gem  'capybara'
 
   gem 'selenium-webdriver'
 

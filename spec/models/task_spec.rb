@@ -7,7 +7,7 @@ RSpec.describe 'Task management function', type: :system do
       task = FactoryBot.create(:task, detail: 'task')
       task = FactoryBot.create(:task, deadline: 'task')
       visit tasks_path
-      expect(page).to have_content 'Task'
+      expect(page).to have_content 'title'
     end
    end
 end
