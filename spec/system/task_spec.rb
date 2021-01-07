@@ -6,6 +6,7 @@ RSpec.describe 'Task management function', type: :system do
                 visit new_task_path
                     fill_in 'Title', with: 'Task3'
                        fill_in 'Detail', with: 'details3'
+                        fill_in 'Deadline', with: '2020-1-20'
                           click_button 'Create Task'
                               expect(page).to have_content 'task created'
                                end
@@ -18,6 +19,7 @@ RSpec.describe 'Task management function', type: :system do
                                          visit new_task_path
                                             fill_in 'Title', with: 'Task3'
                                                fill_in 'Detail', with: 'details3'
+                                                fill_in 'Deadline', with: '2020-1-20'
                                                  click_button 'Create Task'
                                                   click_button 'Show'
                                                       expect(page).to have_content 'Task3'
@@ -31,6 +33,7 @@ RSpec.describe 'Task management function', type: :system do
                                                                  visit new_task_path
                                                                     fill_in 'Title', with: 'Task3'
                                                                        fill_in 'Detail', with: 'details3'
+                                                                          fill_in 'Deadline', with: '2020-1-20'
                                                                           click_button 'Create Task'
                                                                           click_button 'Edit'
                                                                               expect(page).to have_content 'Task3'
@@ -44,6 +47,7 @@ RSpec.describe 'Task management function', type: :system do
                                                                                             visit new_task_path
                                                                                              fill_in 'Title', with: 'Task3'
                                                                                              fill_in 'Detail', with: 'details3'
+                                                                                               fill_in 'Deadline', with: '2020-1-20'
                                                                                               click_button 'Create Task'
                                                                                               click_button 'Destroy'
 
