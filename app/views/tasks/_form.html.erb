@@ -25,8 +25,10 @@
     <%= form.label :status %>
      <%= form.select :status, ["unstarted", "in progress" , "completed"] %>
   <div class="actions">
+    <%= form.label :priority %>
+    <%= form.select :priority, ["High", "Medium" , "Low"] %>
 
     <%= form.submit %>
-    
+
   </div>
 <% end %>
