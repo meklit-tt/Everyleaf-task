@@ -2,11 +2,18 @@ class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
 
   def index
-    @tasks = Task.all
+     @tasks = Task.all
      @tasks= Task.all.order(created_at: "desc")
      @tasks= Task.all.order(params[:sort_expired], deadline: "desc")
+     @q= Task.ransack(params[:q])
+     @tasks= @q.result
+    # @tasks= @q.result.includes(:title, :status)
   end
-
+def search
+  @q=Task.search(search_params)
+  @tasks=@q.result(distinct:true)
+  @tasks= @q.result.includes(:title, :status)
+end
   def show
   #  @task = Task.new(task_params)
   end
@@ -62,6 +69,6 @@ class TasksController < ApplicationController
   end
 
   def task_params
-     params.require(:task).permit(:id, :tasks, :title, :detail, :deadline)
+     params.require(:task).permit(:id, :tasks, :title, :detail, :deadline, :q)
   end
 end
