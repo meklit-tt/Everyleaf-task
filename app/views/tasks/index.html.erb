@@ -2,9 +2,9 @@
 <div class="container">
   <%= search_form_for @q do |f| %>
   <%= f.label :title %>
-  <%= f.search_field :title_cont,placeholder: "title"%>
+  <%= f.search_field :title_cont, placeholder: "title" %>
   <%= f.label :status %>
-  <%= f.select :status, ["unstarted", "in progress" , "completed"] %>
+  <%= f.select :status, ["unstarted"] %>
   <%= f.submit "search" %>
 <% end %>
 
