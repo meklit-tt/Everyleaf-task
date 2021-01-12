@@ -24,6 +24,8 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem 'ransack'
 
+gem 'kaminari'
+
 gem 'bootsnap', '>= 1.1.0', require: false
 
 group :development, :test do

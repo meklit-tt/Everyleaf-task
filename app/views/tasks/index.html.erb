@@ -2,12 +2,12 @@
 <div class="container">
   <%= search_form_for @q do |f| %>
   <%= f.label :title %>
-  <%= f.search_field :title %>
+  <%= f.search_field :title_cont,placeholder: "title"%>
   <%= f.label :status %>
-   <%= f.select :status, ["unstarted", "in progress" , "completed"] %>
-
+  <%= f.select :status, ["unstarted", "in progress" , "completed"] %>
   <%= f.submit "search" %>
 <% end %>
+
 <table>
   <thead>
     <tr>
@@ -28,7 +28,7 @@
         <td><%= task.deadline %></td>
         <td><%= task.status %> </td>
         <td><%= task.priority %></td>
-        <td><button type="button" class="btn btn-secondary"><%= link_to 'Show', task %></button></td>
+        <td><button type="button" class="btn btn-info"><%= link_to 'Show', task %></button></td>
         <td><button type="button" class="btn btn-secondary"><%= link_to 'Edit', edit_task_path(task) %></button></td>
         <td><button type="button" class="btn btn-secondary"><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></button></td>
         <td><button type="button" class="btn btn-secondary"><%= link_to 'sort by deadline', tasks_path(sort_expired: "true") %></button></td>
@@ -41,4 +41,5 @@
 <br>
 
 <button type="button" class="btn btn-success"><%= link_to 'New Task', new_task_path %></button>
+<%= paginate @tasks %>
 </div>
