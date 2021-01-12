@@ -6,6 +6,8 @@ RSpec.describe 'Task management function', type: :system do
       task = FactoryBot.create(:task, title: 'task')
       task = FactoryBot.create(:task, detail: 'task')
       task = FactoryBot.create(:task, deadline: 'task')
+      task = FactoryBot.create(:task, status: 'task')
+      task = FactoryBot.create(:task, priority: 'task')
       visit tasks_path
       expect(page).to have_content 'title'
     end
@@ -18,6 +20,8 @@ end
         task = FactoryBot.create(:task, title: 'task')
         task = FactoryBot.create(:task, detail: 'task')
         task = FactoryBot.create(:task, deadline: 'task')
+        task = FactoryBot.create(:task, status: 'task')
+        task = FactoryBot.create(:task, priority: 'task')
         visit tasks_path
         expect(page).to have_content 'test_detail'
       end
@@ -29,6 +33,8 @@ end
          task = FactoryBot.create(:task, title: 'task')
          task = FactoryBot.create(:task, detail: 'task')
          task = FactoryBot.create(:task, deadline: 'task')
+         task = FactoryBot.create(:task, status: 'task')
+         task = FactoryBot.create(:task, priority: 'task')
          visit tasks_path
          expect(page).to have_content 'detail'
        end
@@ -41,8 +47,23 @@ describe 'Detailed display function' do
        task = FactoryBot.create(:task, title: 'task')
        task = FactoryBot.create(:task, detail: 'task')
        task = FactoryBot.create(:task, deadline: 'task')
+       task = FactoryBot.create(:task, status: 'task')
+       task = FactoryBot.create(:task, priority: 'task')
        visit tasks_path
        expect(page).to have_content 'deadline'
+     end
+   end
+end
+describe 'Detailed display function' do
+   context 'When transitioned to any task details screen' do
+     it 'The content of the relevant task is displayed' do
+       task = FactoryBot.create(:task, title: 'task')
+       task = FactoryBot.create(:task, detail: 'task')
+       task = FactoryBot.create(:task, deadline: 'task')
+       task = FactoryBot.create(:task, status: 'task')
+       task = FactoryBot.create(:task, priority: 'task')
+       visit tasks_path
+       expect(page).to have_content 'status'
      end
    end
 end

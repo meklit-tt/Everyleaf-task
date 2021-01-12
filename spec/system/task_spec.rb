@@ -71,19 +71,17 @@ end
    end
   end
  end
- describe 'search creation function' do
- context 'When creating a new task' do
- it 'Should search created task by title' do
- visit new_task_path
- fill_in 'Title', with: 'Task3'
- fill_in 'Detail', with: 'details3'
- fill_in 'Deadline', with: '2020-1-20'
- fill_in 'status' , with: 'unstarted'
- fill_in 'priority', with: 'High'
- click_button 'Create Task'
- click_button 'Search'
- expect(page).to have_content 'Task3'
- #@tasks= @q.result.page(params[:page]).per(DER)
+      describe 'search creation function' do
+      context 'When creating a new task' do
+      it 'Should search created task by title' do
+      visit new_task_path
+      fill_in 'Title', with: 'Task3'
+      fill_in 'Detail', with: 'details3'
+      fill_in 'Deadline', with: '2020-1-20'
+      click_button 'Create Task'
+      click_button 'search'
+      expect(page).to have_content 'Task3'
+      assert Task.ransack(title:[:q])
    end
   end
  end
