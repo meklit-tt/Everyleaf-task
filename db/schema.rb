@@ -28,8 +28,8 @@ ActiveRecord::Schema.define(version: 2021_01_08_130253) do
     t.datetime "updated_at", null: false
     t.bigint "user_id"
     t.date "deadline"
-    t.string "status", default: "unstarted"
-    t.string "priority"
+    t.string "status"
+    t.string "priority", default: "High"
     t.index ["user_id"], name: "index_tasks_on_user_id"
   end
 

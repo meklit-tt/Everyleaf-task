@@ -23,12 +23,13 @@
   </div>
   <div class="field">
     <%= form.label :status %>
-    <%= form.select :status, ["unstarted"] %>
+    <%= form.select(:status,Task::STATUS_LIST) %>
   <div class="actions">
     <%= form.label :priority %>
     <%= form.select :priority, ["High", "Medium" , "Low"] %>
-
     <%= form.submit %>
 
   </div>
-<% end %>
+
+
+  <% end %>
