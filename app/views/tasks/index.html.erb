@@ -4,7 +4,7 @@
   <%= f.label :title %>
   <%= f.search_field :title_cont, placeholder: "title" %>
   <%= f.label :status %>
-  <%= f.select(:status,Task::STATUS_LIST) %>
+  <%= f.select(:status_cont,Task::STATUS_LIST) %>
   <%= f.submit "search" %>
 <% end %>
 
