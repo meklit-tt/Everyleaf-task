@@ -1,10 +1,16 @@
 <p id="notice"><%= notice %></p>
 <div class="container">
   <%= search_form_for @q do |f| %>
+  <button type="button" class="btn btn-info"><%= sort_link(@q, :deadline, 'deadline', default_order: :desc) %> </button>
+  <button type="button" class="btn btn-info"><%= sort_link(@q, :priority, 'priority', default_order: :desc) %> </button>
   <%= f.label :title %>
   <%= f.search_field :title_cont, placeholder: "title" %>
   <%= f.label :status %>
   <%= f.select(:status_cont,Task::STATUS_LIST) %>
+  <%= f.label :priority %>
+  <%= f.select(:priority_cont,Task::PRIORITY_LIST) %>
+
+
   <%= f.submit "search" %>
 <% end %>
 
@@ -28,10 +34,10 @@
         <td><%= task.deadline %></td>
         <td><%= task.status %> </td>
         <td><%= task.priority %></td>
-        <td><button type="button" class="btn btn-info"><%= link_to 'Show', task %></button></td>
+        <td><button type="button" class="btn btn-secondary"><%= link_to 'Show', task %></button></td>
         <td><button type="button" class="btn btn-secondary"><%= link_to 'Edit', edit_task_path(task) %></button></td>
         <td><button type="button" class="btn btn-secondary"><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></button></td>
-        <td><button type="button" class="btn btn-secondary"><%= link_to 'sort by deadline', tasks_path(sort_expired: "true") %></button></td>
+
 
       </tr>
     <% end %>

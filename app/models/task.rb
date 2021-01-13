@@ -4,11 +4,11 @@ class Task < ApplicationRecord
    validates :deadline, presence: true
    validates :status, presence: true
    validates :priority, presence: true
+   #belongs_to :user
 
    paginates_per 5
 
    STATUS_LIST = ["Unstarted", "Inprogress", "Completed"]
-
-   belongs_to :user
+   PRIORITY_LIST = ["High", "Medium", "Low"]
 
 end

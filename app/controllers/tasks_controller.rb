@@ -2,20 +2,22 @@ class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
   DER=5
   def index
-     @tasks = Task.all
-     @tasks= Task.all.order(created_at: "desc")
-     @tasks= Task.all.order(params[:sort_expired], deadline: "desc")
+    # @tasks = Task.all
+    # @tasks= Task.all.order(created_at: "desc")
+    #@tasks= Task.all.order(params[:sort_expired], deadline: "desc")
+    # @tasks= Task.where(priority:params[:'High'])
      @q= Task.ransack(params[:q])
      @tasks= @q.result.page(params[:page]).per(DER)
+     if params[:sort_priority]
+     @tasks = @tasks.order('priority DESC').page params[:page]
 
   end
-
+end
   def show
   #  @task = Task.new(task_params)
   end
 
   def new
-
     if params[:back]
       @task = Task.new(task_params)
     else
@@ -33,14 +35,12 @@ class TasksController < ApplicationController
   end
   def create
     @task = Task.new(task_params)
-    @task.user_id = current_user.id
+    #@task.user_id = current_user.id
     if @task.save
     redirect_to tasks_path
     flash[:notice] = 'task created'
-
     else
       render :new
-      #flash[:notice] = 'task created'
 
     end
   end

@@ -26,7 +26,8 @@
     <%= form.select(:status,Task::STATUS_LIST) %>
   <div class="actions">
     <%= form.label :priority %>
-    <%= form.select :priority, ["High", "Medium" , "Low"] %>
+    <%= form.select :priority, ['High','Medium','Low'] %>
+
     <%= form.submit %>
 
   </div>
