@@ -16,6 +16,18 @@
 <strong>Status:</strong>
 <%= @task.status %>
 </p>
+<p>
+<strong>Priority:</strong>
+<%= @task.priority.present? %>
+<%if @task.priority == 1%>
+     <span> High </span>
+  <%elsif @task.priority == 2%>
+     <span> Medium </span>
+   <%elsif @task.priority == 3%>
+      <span> Low </span>
+  <% end %>
+<% end %>
+</p>
 <%= link_to 'Edit', edit_task_path(@task) %> |
 <%= link_to 'Back', tasks_path %>
 </div>

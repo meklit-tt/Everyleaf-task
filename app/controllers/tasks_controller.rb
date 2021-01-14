@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
-  DER=5
+  DER=3
   def index
     # @tasks = Task.all
     # @tasks= Task.all.order(created_at: "desc")
@@ -8,11 +8,8 @@ class TasksController < ApplicationController
     # @tasks= Task.where(priority:params[:'High'])
      @q= Task.ransack(params[:q])
      @tasks= @q.result.page(params[:page]).per(DER)
-     if params[:sort_priority]
-     @tasks = @tasks.order('priority DESC').page params[:page]
-
   end
-end
+
   def show
   #  @task = Task.new(task_params)
   end
@@ -63,7 +60,6 @@ end
   def set_task
      @task = Task.find(params[:id])
   end
-
   def task_params
      params.require(:task).permit(:id, :tasks, :title, :detail, :deadline, :q, :priority, :status)
   end
