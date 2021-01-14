@@ -67,10 +67,23 @@ end
       fill_in 'Deadline', with: '2020-1-20'
       click_button 'Create Task'
       click_button 'sort by deadline'
-      assert Task.all.order(deadline: "desc")
+      assert Task.ransack(deadline:[:q])
    end
   end
  end
+     describe 'New sorting function' do
+     context 'When creating a new task' do
+     it 'Should display sorted task by priority' do
+     visit new_task_path
+     fill_in 'Title', with: 'Task3'
+     fill_in 'Detail', with: 'details3'
+     fill_in 'Deadline', with: '2020-1-20'
+     click_button 'Create Task'
+     click_button 'sort by priority'
+     assert Task.ransack(priority:[:q])
+  end
+ end
+end
       describe 'search creation function' do
       context 'When creating a new task' do
       it 'Should search created task by title' do
@@ -82,6 +95,36 @@ end
       click_button 'search'
       expect(page).to have_content 'Task3'
       assert Task.ransack(title:[:q])
+   end
+  end
+ end
+
+    describe 'search creation function' do
+    context 'When creating a new task' do
+    it 'Should search created task by status' do
+    visit new_task_path
+    fill_in 'Title', with: 'Task3'
+    fill_in 'Detail', with: 'details3'
+    fill_in 'Deadline', with: '2020-1-20'
+    click_button 'Create Task'
+    click_button 'search'
+    expect(page).to have_content 'Task3'
+    assert Task.ransack(status:[:q])
+     end
+   end
+ end
+ describe 'search creation function' do
+ context 'When creating a new task' do
+ it 'Should search created task by title and status' do
+ visit new_task_path
+ fill_in 'Title', with: 'Task3'
+ fill_in 'Detail', with: 'details3'
+ fill_in 'Deadline', with: '2020-1-20'
+ click_button 'Create Task'
+ click_button 'search'
+ expect(page).to have_content 'Task3'
+ assert Task.ransack(status:[:q] , title: [:q])
+
    end
   end
  end
