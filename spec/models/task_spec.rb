@@ -22,7 +22,7 @@ end
       context 'When ambiguous title search and status search are performed by scope method' do
       it "Tasks that include the search keyword in the title and exactly match the status are narrowed down" do
        Task.create( title: 'thi', detail: 'ttt', deadline: '2020-9-3', status:'unstarted', priority:'3')
-    #   expect(Task.search_title(title:'thi').not_to include(status: 'unstarted'))
+       expect(Task.search_title(title:'thi').not_to include(:status))
     end
    end
  end
