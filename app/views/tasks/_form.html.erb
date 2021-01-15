@@ -13,12 +13,22 @@
     <%= form.label :title %>
     <%= form.text_area :title %>
   </div>
-  <div class="field">
+   <div class="field">
     <%= form.label :detail %>
     <%= form.text_area :detail %>
   </div>
-
-  <div class="actions">
-    <%= form.submit %>
+  <div class="field">
+    <%= form.label :deadline %>
+    <%= form.text_area :deadline %>
   </div>
-<% end %>
+  <div class="field">
+    <%= form.label :status %>
+    <%= form.select(:status,Task::STATUS_LIST) %>
+  </div>
+  <div class="actions">
+    <%= form.label :priority %>
+    <%= form.select :priority, [['High','1'], ['Medium','2'], ['Low', '3']] %>
+  </div>
+    <%= form.submit %>
+
+  <% end %>

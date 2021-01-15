@@ -14,5 +14,7 @@
   <%= form_with(model: @task, url: new_task_path, local: true, method: 'get') do |form| %>
   <%= form.hidden_field :title %>
   <%= form.hidden_field :detail %>
+  <%= form.hidden_field :deadline %>
+  <%= form.hidden_field :status %>
   <%= form.submit "back", name:'back' %>
 <% end %>

@@ -6,5 +6,5 @@ validates :email, presence: true, uniqueness: true, length: {maximum: 255},
  has_secure_password
 
  validates :password, presence: true, length: {minimum: 6}
- #has_many :tasks
+# has_many :tasks
  end
