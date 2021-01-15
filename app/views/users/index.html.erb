@@ -6,7 +6,9 @@
 
   <div class="row list_wrapper">
     <% @users.each do |user| %>
+      <div class="row list-head">
 
+        <div class="col-xs-10 user-info">
           <h3>
             <strong> <%= link_to "#{user.name}", user_path(user.id) %> </strong>
           </h3>
@@ -14,7 +16,12 @@
       </div>
     <% end %>
 
-        <%= link_to tasks_path %><h3>Return to Home</h3>
+    <div class="row">
+      <div class="col-xs-12 link">
+        <%= link_to tasks_path %>
       </div>
     </div>
+
+  </div>
+ </div>
 </div>
