@@ -4,7 +4,9 @@ class Task < ApplicationRecord
    validates :deadline , presence: true
    validates :status, presence: true
    validates :priority, presence: true , numericality: { only_integer: true, greater_than: -1, less_than: 4 }
+
    belongs_to :user
+   has_many :tasks 
 
    paginates_per 3
 

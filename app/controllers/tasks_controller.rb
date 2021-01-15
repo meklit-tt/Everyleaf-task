@@ -3,6 +3,7 @@ class TasksController < ApplicationController
   DER=3
   def index
      @tasks = Task.all
+     @tasks= current_user.tasks
      @q= Task.ransack(params[:q])
      @tasks= @q.result.page(params[:page]).per(DER)
   end
