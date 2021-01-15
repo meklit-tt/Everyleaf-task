@@ -1,15 +1,19 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
+  before_action :current_user
+  #before_action :authenticate_user
+  before_action :logged_in?
   DER=3
   def index
-     @tasks = Task.all
-     @tasks= current_user.tasks
+     #@tasks = Task.all
+     @q= current_user.tasks.includes(:user).ransack(params[:q])
+     #Task.where("tasks.user_id = ?", user.id).order('created_at asc').first
      @q= Task.ransack(params[:q])
      @tasks= @q.result.page(params[:page]).per(DER)
   end
 
   def show
-  #@task = Task.new(task_params)
+    #@task=Task.find(params[:id]
   end
 
   def new
@@ -51,7 +55,7 @@ class TasksController < ApplicationController
 
   def destroy
       Task.find(params[:id]).destroy
-      redirect_to new_task_path, notice: 'task was successfully destroyed.'
+      redirect_to tasks_path, notice: 'task was successfully destroyed.'
     end
   private
   def set_task
