@@ -1,6 +1,6 @@
 <div class="field">
 
-   <% f.text_field :name, placeholder: 'name', class:"form-control" %>
+<% f.text_field :name, placeholder: 'name', class:"form-control" %>
 
 <h1 class ="center"><%= @user.name %>'s page</h1>
 <div class ="col-md-6">
@@ -10,7 +10,6 @@
       <th>ID</th>
       <td><%= @user.id %></td>
     </tr>
-
     <tr>
       <th>UserName</th>
       <td><%= @user.name %></td>
@@ -40,8 +39,10 @@
     <th>Status</th>
     <th>Priority</th>
   </tr>
- </thead>
- <tbody>
+  <thead>
+</table>
+</div>
+ <table>
    <% @tasks.each do |task| %>
      <tr>
        <td><%= task.title %></td>
@@ -51,6 +52,5 @@
        <td><%= task.priority %></td>
      </tr>
   <% end %>
-   </tbody>
   </table>
  </div>
