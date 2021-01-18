@@ -1,11 +1,10 @@
 <div class="field">
 
-<% f.text_field :name, placeholder: 'name', class:"form-control" %>
-
 <h1 class ="center"><%= @user.name %>'s page</h1>
 <div class ="col-md-6">
-<table class="user_show_table clearfix">
+<table>
   <thead>
+
     <tr>
       <th>ID</th>
       <td><%= @user.id %></td>
@@ -19,11 +18,11 @@
       <td><%= @user.email %></td>
     </tr>
     <tr>
-      <th>User admin priviledges</th>
+      <th>priviledges</th>
       <td><%= @user.admin? ? "yes":"no" %></td>
     </tr>
     <tr>
-      <th><%= link_to 'Return to user Management, admin_users_path %></th>
+      <td><%= link_to 'return to user ranagement', admin_users_path %></td>
     </tr>
     </thead>
    </table>
@@ -34,7 +33,7 @@
   <thead>
   <tr>
     <th>Title</th>
-    <th>Content</th>
+    <th>Detail</th>
     <th>Deadline</th>
     <th>Status</th>
     <th>Priority</th>
@@ -42,11 +41,12 @@
   <thead>
 </table>
 </div>
- <table>
+<div class="text-left">
+<table class="table table-striped">
    <% @tasks.each do |task| %>
-     <tr>
+     <tr >
        <td><%= task.title %></td>
-       <td><%= task.content %></td>
+       <td><%= task.detail %></td>
        <td><%= task.deadline %></td>
        <td><%= task.status %></td>
        <td><%= task.priority %></td>
@@ -54,3 +54,4 @@
   <% end %>
   </table>
  </div>
+</div>

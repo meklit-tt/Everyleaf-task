@@ -1,5 +1,5 @@
 class Admin::UsersController < ApplicationController
-  before_action :if_not_admin
+  before_action :authorize_admin, only: [:index]
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   DER=3
   def index
@@ -43,16 +43,13 @@ class Admin::UsersController < ApplicationController
 
   def destroy
     @user= User.find(params[:id])
-    if(current_user == user) && (current_user.admin?)
-      flash[:error]="admin canot deleted"
+    if(current_user == @user) && (current_user.admin?)
+    flash[:error]="admin canot deleted"
     redirect_to admin_users_path
-    elsif @user.destroy
-    flash[:success]= "uder deleted!"
+    else @user.destroy
+    flash[:success]= "user deleted!"
     redirect_to admin_users_path
-   else
-     flash[:danger]= "user not deleted"
-     redirect_to admin_user_path
-  end
+    end
 end
 
   private
@@ -61,11 +58,11 @@ end
     @user=User.find(params[:id])
   end
 
-  def if_not_admin
-    #redirect_to tasks_path(current_user.id) unless current_user.admin?
+  def authorize_admin
+      #redirect_to user_path, alert: "Permissions denied" unless
+       #current_user.admin?
   end
-
   def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation, :admin)
   end
 end

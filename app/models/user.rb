@@ -5,11 +5,15 @@ validates :email, presence: true, uniqueness: true, length: {maximum: 255},
  before_validation {email.downcase!}
  has_secure_password
  validates :password, presence: true, length: {minimum: 6}
+
+ validates  :admin ,  inclusion: {in: [ true ,  false ]}
+
  has_many :tasks , dependent: :destroy
- #attr_accessible :name, :email, :password, :password_confirmation#, :admin
+
+ paginates_per 3
 
 
-#def must_not_destroy_last_admin
+def not_destroy_admin
 #  throw(:abort) if User.where(admin: true).count <= && self.admin == true
-#end
+end
  end

@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root 'users#new'
   resources :tasks
-  resources :users, only: [:new, :create, :show, :edit]
+  resources :users, only: [:new, :create, :show, :edit, :destroy]
   resources :sessions, only: [:new, :create, :destroy]
   namespace :admin do
   resources :users, only: [:index, :edit, :update, :new, :create, :show, :destroy]

@@ -15,6 +15,8 @@
     <%= form.email_field :email, placeholder: 'email', class:"form-control" %>
     <%= form.password_field :password, placeholder: 'password', class:"form-control" %>
     <%= form.password_field :password_confirmation, placeholder: 'password_confirmation' , class:"form-control" %>
+    <%= form.label :admin %>
+    <%= form.check_box :admin, {}, 'true', 'false' %>
     <%= form.submit "submit", class:"button_primary" %>
     <% end %>
   </div>
