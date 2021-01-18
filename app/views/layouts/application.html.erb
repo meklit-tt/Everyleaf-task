@@ -19,7 +19,7 @@
 
       <% if logged_in? %>
       <% if current_user.admin? %>
-        <button type="button" class="btn btn-default"><%= link_to "User Managment", new_admin_users_path %></button>
+        <button type="button" class="btn btn-default"><%= link_to "User Managment", admin_users_path %></button>
         <button type="button" class="btn btn-default"><%= link_to "tasks", tasks_path %></button>
       <% end %>
       <% end %>
