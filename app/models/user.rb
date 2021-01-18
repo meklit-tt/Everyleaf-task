@@ -12,8 +12,11 @@ validates :email, presence: true, uniqueness: true, length: {maximum: 255},
 
  paginates_per 3
 
+ before_destroy :not_destroy_admin
+
+private
 
 def not_destroy_admin
-#  throw(:abort) if User.where(admin: true).count <= && self.admin == true
-end
+   throw(:abort) if User.where(admin: true).count <= 1 && self.admin == true
  end
+end

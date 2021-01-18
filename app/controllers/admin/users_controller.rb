@@ -1,5 +1,5 @@
 class Admin::UsersController < ApplicationController
-  before_action :authorize_admin, only: [:index]
+  before_action :authorize_admin, only: [:admi]
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   DER=3
   def index
@@ -42,16 +42,17 @@ class Admin::UsersController < ApplicationController
   end
 
   def destroy
-    @user= User.find(params[:id])
-    if(current_user == @user) && (current_user.admin?)
-    flash[:error]="admin canot deleted"
+    user = User.find(params[:id])
+    if (current_user == user) && (current_user.admin?)
+    flash[:error] = "You cannot delete own admin account!"
     redirect_to admin_users_path
-    else @user.destroy
-    flash[:success]= "user deleted!"
+    elsif @user.destroy
+    flash[:success] = "user deleted!"
     redirect_to admin_users_path
-    end
+    else
+    redirect_to admin_users_path
 end
-
+end
   private
 
   def set_user
@@ -59,8 +60,7 @@ end
   end
 
   def authorize_admin
-      #redirect_to user_path, alert: "Permissions denied" unless
-       #current_user.admin?
+    redirect_to admin_user_path, alert: "Permissions denied" unless current_user.admin?
   end
   def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation, :admin)

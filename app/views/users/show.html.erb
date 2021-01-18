@@ -11,8 +11,7 @@
           <% if logged_in? %>
               <% if @user == current_user %>
                 <button type="button" class="btn btn-default"><%= link_to 'New Task', new_task_path %></button>
-                <button type="button" class="btn btn-default"><%= link_to 'Edit Info', edit_user_path(@user) %></button>
-                <%= link_to 'Delete Account', @user, method: :delete, data: { confirm: 'Are you sure?' } , class: "btn btn-danger "%>
+          
               <% end %>
           <% end %>
 </div>
