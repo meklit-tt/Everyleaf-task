@@ -10,12 +10,12 @@ class TasksController < ApplicationController
     # @q= current_user.tasks.includes(:user).ransack(params[:q])
      #@task=Task.where("tasks.user_id = ?", user.id).order('created_at asc').first
      @q=current_user.tasks.ransack(params[:q])
-  #   @q= Task.ransack(params[:q])
+   #  @q= Task.ransack(params[:q])
      @tasks= @q.result(distinct: true).page(params[:page]).per(DER)
   end
 
   def show
-    #@task=Task.find(params[:id])
+    @task=Task.find(params[:id])
   end
 
   def new
