@@ -1,7 +1,7 @@
 class Admin::UsersController < ApplicationController
-  before_action :authorize_admin, only: [:admi]
+  before_action :authorize_admin, only: [:admin]
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-  DER=3
+
   def index
     @users = User.select(:id, :name, :email, :admin).order(created_at: "DESC")
   end
@@ -25,7 +25,7 @@ class Admin::UsersController < ApplicationController
   end
 
   def show
-    @tasks= Task.where(user_id: @user.id).page(params[:page]).per(DER)
+    @tasks= Task.where(user_id: @user.id).page(params[:page]).per 3
   end
 
   def edit

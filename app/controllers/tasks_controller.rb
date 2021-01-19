@@ -1,19 +1,21 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
   before_action :current_user
-  #before_action :authenticate_user
+  before_action :authenticate_with_http_digest, except: [:show, :index]
+  before_action :require_same_user, only: [:edit, :update, :destroy]
   before_action :logged_in?
-  DER=3
+  DER = 3
   def index
      #@tasks = Task.all
-     @q= current_user.tasks.includes(:user).ransack(params[:q])
-     #Task.where("tasks.user_id = ?", user.id).order('created_at asc').first
-     @q= Task.ransack(params[:q])
-     @tasks= @q.result.page(params[:page]).per(DER)
+    # @q= current_user.tasks.includes(:user).ransack(params[:q])
+     #@task=Task.where("tasks.user_id = ?", user.id).order('created_at asc').first
+     @q=current_user.tasks.ransack(params[:q])
+  #   @q= Task.ransack(params[:q])
+     @tasks= @q.result(distinct: true).page(params[:page]).per(DER)
   end
 
   def show
-    #@task=Task.find(params[:id]
+    #@task=Task.find(params[:id])
   end
 
   def new
@@ -64,4 +66,10 @@ class TasksController < ApplicationController
   def task_params
      params.require(:task).permit(:id, :tasks, :title, :detail, :deadline, :q, :priority, :status,   :user_id, :name, :email)
   end
+  def require_same_user
+    if current_user !=@task.user && !current_user.sdmin?
+    flash[:alert]= "you can't edit & delete your own task"
+     redirect_to @user
+    end
+   end
 end
