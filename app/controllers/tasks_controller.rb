@@ -7,7 +7,8 @@ class TasksController < ApplicationController
   def index
      #@tasks = Task.all
      @q = current_user.tasks.includes(:user).ransack(params[:q])
-     @tasks = @q.result(distinct: true).page(params[:page]).per(DER)
+     #@q=current_user.tasks.ransack(params[:q])
+     @tasks = @q.result(distinct:true).page(params[:page]).per(DER)
   end
   def show
     if current_user.id !=@task.user_id

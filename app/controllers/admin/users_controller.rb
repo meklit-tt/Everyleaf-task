@@ -1,5 +1,4 @@
 class Admin::UsersController < ApplicationController
-  before_action :authorize_admin, only: [:show]
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   before_action :autorize_admin, only:[:edit, :update, :destroy]
   PER=3

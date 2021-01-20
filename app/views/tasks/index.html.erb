@@ -23,8 +23,8 @@
 
   <tbody>
     <% @tasks.each do |task| %>
+    <tr>
       <% if current_user.id == task.user_id %>
-        <tr>
         <td><%= task.title %></td>
         <td><%= task.detail %></td>
         <td><%= task.deadline %></td>
