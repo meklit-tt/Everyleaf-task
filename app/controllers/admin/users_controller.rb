@@ -1,7 +1,8 @@
 class Admin::UsersController < ApplicationController
-  before_action :authorize_admin, only: [:admin]
+  before_action :authorize_admin, only: [:show]
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-
+  before_action :autorize_admin, only:[:edit, :update, :destroy]
+  PER=3
   def index
     @users = User.select(:id, :name, :email, :admin).order(created_at: "DESC")
   end
@@ -25,7 +26,7 @@ class Admin::UsersController < ApplicationController
   end
 
   def show
-    @tasks= Task.where(user_id: @user.id).page(params[:page]).per 3
+    @tasks= Task.where(user_id: @user.id).page(params[:page]).per(PER)
   end
 
   def edit
@@ -58,7 +59,6 @@ end
   def set_user
     @user=User.find(params[:id])
   end
-
   def authorize_admin
     redirect_to admin_user_path, alert: "Permissions denied" unless current_user.admin?
   end

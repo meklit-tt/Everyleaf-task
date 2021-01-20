@@ -2,47 +2,45 @@
 
 <h1 class ="center"><%= @user.name %>'s page</h1>
 <div class ="col-md-6">
-<table>
-  <thead>
-
-    <tr>
-      <th>ID</th>
-      <td><%= @user.id %></td>
-    </tr>
-    <tr>
-      <th>UserName</th>
-      <td><%= @user.name %></td>
-    </tr>
-    <tr>
-      <th>Email</th>
-      <td><%= @user.email %></td>
-    </tr>
-    <tr>
-      <th>priviledges</th>
-      <td><%= @user.admin? ? "yes":"no" %></td>
-    </tr>
+    <p>
+      <strong>User_id:</strong>
+        <%= @user.id %>
+    </p>
+    <p>
+      <strong>UserName</strong>
+      <%= @user.name %>
+    </p>
+    <p>
+      <strong>Email</strong>
+      <%= @user.email %>
+    </p>
+    <p>
+      <strong>priviledges</strong>
+      <%= @user.admin? ? "yes":"no" %>
+    </p>
+    <p>
+    <strong>created date:</strong>
+    <%= @user.created_at %>
+    </p>
+    <%= link_to "Back to User Managment", admin_users_path %>
     <hr>
-    </thead>
-   </table>
-  </div>
- <hr>
-<div class="text-right">
-<table class="table table-striped">
-  <thead>
-  <tr>
-    <th>Title</th>
-    <th>Detail</th>
-    <th>Deadline</th>
-    <th>Status</th>
-    <th>Priority</th>
+</div>
+
+<div class="text-left">
+<table class="table table-striped", border= "1px solid black" >
+   <caption>Task details</caption>
+  <tr style="background-color:#7FB3D5">
+    <td>Title</td>
+    <td>Detail</td>
+    <td>Deadline</td>
+    <td>Status</td>
+    <td>Priority</td>
   </tr>
-  <thead>
-</table>
+
 </div>
 <div class="text-left">
-<table class="table table-striped">
    <% @tasks.each do |task| %>
-     <tr >
+     <tr>
        <td><%= task.title %></td>
        <td><%= task.detail %></td>
        <td><%= task.deadline %></td>
