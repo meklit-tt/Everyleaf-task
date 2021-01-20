@@ -1,10 +1,17 @@
-<div class="container">
-<h1>Name:<%= @user.name %></h1>
-<h3>email address: <%= @user.email %></h3>
-<hr>
-<% if logged_in? %>
-  <%= link_to 'View tasks', tasks_path %>
-<% else %>
-  <%= link_to 'Log in', new_session_path %>
-<% end %>
+<div class="container-fluid text-center">
+
+  <div class="col-xs-8 col-xs-push-2">
+    <p id="notice"><%= notice %></p>
+  </div>
+            <span style="font-size:36px">
+              <%= @user.name %><br>
+            </span>
+            <strong>Email:</strong>
+              <%= @user.email %>
+          <% if logged_in? %>
+              <% if @user == current_user %>
+              <button type="button" class="btn btn-default"><%= link_to 'New Task', new_task_path %></button>
+  <button type="button" class="btn btn-default"><%= link_to 'Back', tasks_path %></button>
+              <% end %>
+          <% end %>
 </div>
