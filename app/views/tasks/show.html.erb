@@ -32,8 +32,12 @@
      <span> Medium </span>
    <%elsif @task.priority == 3%>
       <span> Low </span>
-  <% end %>
-
+    </p>
+   <% end %>
+   <p>
+    <strong>Lable </strong>
+    <% @task.labels.each do |lable| %>
+        [<%= lable.name %>]<% end %>
 </p>
 <%= link_to 'Edit', edit_task_path(@task) %> |
 <%= link_to 'Back', tasks_path %>

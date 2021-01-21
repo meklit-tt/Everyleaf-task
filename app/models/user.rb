@@ -9,7 +9,7 @@ validates :email, presence: true, uniqueness: true, length: {maximum: 255},
  validates  :admin ,  inclusion: {in: [ true ,  false ]}
 
  has_many :tasks , dependent: :destroy
-
+ has_many :labels , dependent: :destroy
  paginates_per 3
 
  before_destroy :not_destroy_admin
