@@ -1,7 +1,7 @@
 class Admin::UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   before_action :autorize_admin, only:[:edit, :update, :destroy]
-  PER=3
+
   def index
     @users = User.select(:id, :name, :email, :admin).order(created_at: "DESC")
   end
@@ -9,7 +9,7 @@ class Admin::UsersController < ApplicationController
   def new
     @user = User.new
     if logged_in?
-      redirect_to tasks_path
+      redirect_to admin_users_path
     end
   end
 
@@ -25,7 +25,7 @@ class Admin::UsersController < ApplicationController
   end
 
   def show
-    @tasks= Task.where(user_id: @user.id).page(params[:page]).per(PER)
+    @tasks= Task.where(user_id: @user.id).page(params[:page]).per 3
   end
 
   def edit

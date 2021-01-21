@@ -5,7 +5,8 @@
   <%= f.search_field :title_cont, placeholder: "title" %>
   <%= f.label :status %>
   <%= f.search_field :status_cont, placeholder: "status" %>
-  <%= f.submit "search" %>
+  <%= f.submit  "search" %>
+
 <% end %>
 
 <table>
@@ -36,9 +37,11 @@
               <td>Medium</td>
           <%elsif task.priority == 3%>
                <td>Low</td>
+          <% task.lables.each do |lable| %>
+           <%= lable.name %>
           <% end %>
         <% end %>
-
+       <% end %>
         <td><button type="button" class="btn btn-secondary"><%= link_to 'Show', task %></button></td>
         <td><button type="button" class="btn btn-secondary"><%= link_to 'Edit', edit_task_path(task) %></button></td>
         <td><button type="button" class="btn btn-secondary"><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></button></td>

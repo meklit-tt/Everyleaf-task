@@ -19,7 +19,7 @@
   </div>
   <div class="field">
     <%= form.label :deadline %>
-    <%= form.text_area :deadline %>
+    <%= form.date_select :deadline, class:'form-conrtol', value: Time.now.strftime("%y-%m-%d") %>
   </div>
   <div class="field">
     <%= form.label :status %>

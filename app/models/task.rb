@@ -6,7 +6,7 @@ class Task < ApplicationRecord
    validates :priority, presence: true , numericality: { only_integer: true, greater_than: -1, less_than: 4 }
 
    belongs_to :user, optional: true
-   has_many :tasks
+   has_many :lables, dependent: :destroy
 
    paginates_per 3
 
