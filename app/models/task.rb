@@ -17,8 +17,6 @@ class Task < ApplicationRecord
 end
    paginates_per 3
 
-   #STATUS_LIST = [ "Unstarted", "Inprogress", "Completed"]
-
 
   scope :search_status, -> (status){where('status = ?',status)}
   scope :search_title, -> (title){where('title LIKE ?',"%#{title}%")}
