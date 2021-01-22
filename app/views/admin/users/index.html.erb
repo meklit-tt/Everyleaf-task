@@ -1,19 +1,23 @@
 <h2 class ="center"> List of Users</h2>
 <br>
 
-<hr>
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <td>User_Id</td>
-      <td>User_name</td>
-      <td>Email</td>
-      <td> No of Tasks </td>
-      <td>privilages</td>
-      <td clospan="4"></td>
+<div class="text-left">
+<table class="table table-striped", border= "1px solid black">
+   <thead>
+    <tr style="background-color:#7FB3D5">
+      <th>User_Id</th>
+      <th>User_name</th>
+      <th>Email</th>
+      <th> No of Tasks </th>
+      <th>privilages</th>
+      <th></th>
+      <th></th>
+      <td clospan="2"></td>
    </tr>
-  </thead>
-  <tbody>
+   </thead>
+ </div>
+
+  <div class="text-left">
   <% @users.each do |user| %>
     <tr>
       <td><%= user.id %></td>
@@ -25,10 +29,8 @@
       <td><button type="button" class="btn btn-success"><%= link_to 'Edit', edit_admin_user_path(user.id) %></td>
       <td><button type="button" class="btn btn-danger"><%= link_to 'Destroy', admin_user_path(user.id), method: :delete, data: { confirm: 'Are you sure?' } %></button></td>
     </tr>
-
+</div>
 <% end %>
-
-</tbody>
 </table>
 <br>
 <%= link_to 'Create user', new_admin_user_path, class:"btn btn-info "%>

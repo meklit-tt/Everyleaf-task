@@ -5,9 +5,10 @@ class TasksController < ApplicationController
   before_action :logged_in?
   DER=3
   def index
-     
+
      @q = current_user.tasks.includes(:user).ransack(params[:q])
      @tasks = @q.result(distinct: true).page(params[:page]).per(DER)
+     #@tasks = @tasks.joins(:labels).where(labels: { id: params[:label_id] }) if params[:label_id].present?
 
   end
   def show
