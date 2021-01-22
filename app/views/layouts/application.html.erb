@@ -31,6 +31,7 @@
     </div>
       <div class="top">
     <% if logged_in? %>
+    <button type="button" class="btn btn-default"><%= link_to "Label", labels_path %></button>
     <button type="button" class="btn btn-default"><%= link_to "Profile", user_path(current_user.id) %></button>
     <button type="button" class="btn btn-default"> <%= link_to "New task", new_task_path %></button>
     <button type="button" class="btn btn-default"><%= link_to "Logout", session_path(current_user.id), method: :delete %></button>
