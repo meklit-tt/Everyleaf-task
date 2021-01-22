@@ -22,6 +22,7 @@
       <th>Title</th>
       <th>Detail</th>
       <th>Label</th>
+
       <th><button type="button" class="btn btn-info"><%= sort_link(@q, :deadline, 'sort by deadline', default_order: :desc) %> </button></th>
       <th>Status</th><br>
       <th><button type="button" class="btn btn-info"><%= sort_link(@q, :priority, 'sort by priority', default_order: :desc) %> </button></th>
@@ -37,7 +38,7 @@
         <td><%= task.detail %></td>
         <td>
           <% task.labels.each do |label| %>
-              <%= label.name %>
+              [<%= label.name %>]
                <% end %>
          </td>
         <td><%= task.deadline %></td>

@@ -8,7 +8,13 @@ class Task < ApplicationRecord
    belongs_to :user, optional: true
    has_many :labellings, dependent: :destroy
    has_many :labels, through: :labellings
+   accepts_nested_attributes_for :labellings, :reject_if => proc { |a|
+    a['label_id'].blank? }
+  accepts_nested_attributes_for :labels
 
+  before_save do
+    self.label.gsub!(/[\[\]\"]/,"") if attribute_present? ("label")
+end
    paginates_per 3
 
    #STATUS_LIST = [ "Unstarted", "Inprogress", "Completed"]

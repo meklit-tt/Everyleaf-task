@@ -69,6 +69,6 @@ end
   def task_params
      params.require(:task).permit(:id, :tasks, :title, :detail, :deadline, :q,
                                   :priority, :status, :user_id, :name, :email,
-                                  { label_id: [] }, :label_id)
+                                  label_ids: [])
   end
 end

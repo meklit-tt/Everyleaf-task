@@ -35,9 +35,23 @@ RSpec.describe 'Label function', type: :system do
         fill_in 'Detail', with: 'details'
         fill_in 'Deadline', with: '2019-9-28'
         select 'Inprogress'
-        check 'poor'
+        #check (name: "good")
         click_button 'Create Task'
         expect(page).to have_content 'task created'
+      end
+    end
+  end
+  describe 'Search function' do
+    context 'When you search by label' do
+      it "Filter by tasks that include label selected" do
+        label = Label.create(name: 'good')
+        task = Task.create(title: "title1", detail: "content1", deadline: "2021-1-1", status:"Complete", priority: "Low", user_id: @user.id)
+        labelling = Labelling.create(label_id: label.id)
+        visit tasks_path
+        select 'good'
+        click_on 'Search'
+        expect(page).to have_content 'good'
+        assert Task.ransack(title:[:q])
       end
     end
   end
